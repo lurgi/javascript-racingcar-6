@@ -1,3 +1,5 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+
 import Car from './Car';
 
 const ERROR_MESSAGES = {
@@ -8,6 +10,7 @@ const ERROR_MESSAGES = {
 
 class Race {
   #cars = [];
+
   #tryNumber;
 
   setCars(carNames) {
@@ -42,6 +45,31 @@ class Race {
     if (number < 1 || number > 50) {
       throw new Error(ERROR_MESSAGES.notTryValid);
     }
+  }
+
+  genGoOrNot() {
+    this.#cars.forEach((car) => {
+      const IS_FORWARD = this.#getIsForward();
+      if (IS_FORWARD) car.forward();
+    });
+  }
+
+  getCarsNamesAndDistance() {
+    const RETURN_OBJ = {};
+
+    this.#cars.forEach((car) => {
+      const NAME = car.getName();
+      const DISTANCE = car.getDistance();
+      RETURN_OBJ[NAME] = DISTANCE;
+    });
+
+    return RETURN_OBJ;
+  }
+
+  #getIsForward() {
+    const RANDOM = MissionUtils.Random.pickNumberInRange(0, 9);
+    if (RANDOM > 4) return true;
+    return false;
   }
 }
 

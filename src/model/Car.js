@@ -1,11 +1,27 @@
 const ERROR_MESSAGES = {
-  notValid: '[ERROR] 이름은 5자이하, 2개이상, 쉼표로 구분해주세요.',
+  notValid: '[ERROR] 이름은 5자이하여야 합니다.',
 };
 
 class Car {
+  #distance = 0;
+
+  #name;
+
   constructor(name) {
     this.#validName(name);
-    this.name = name;
+    this.#name = name;
+  }
+
+  forward() {
+    this.#distance += 1;
+  }
+
+  getDistance() {
+    return this.#distance;
+  }
+
+  getName() {
+    return this.#name;
   }
 
   #validName(name) {

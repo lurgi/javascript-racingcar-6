@@ -9,7 +9,7 @@ class App {
     await this.playCarName();
     await this.playTry();
     this.playResults();
-    //TODO 우승자 출력하기
+    // TODO 우승자 출력하기
   }
 
   async playCarName() {
@@ -33,15 +33,13 @@ class App {
   }
 
   playResults() {
-    let cnt = 0;
+    OutputView.printResultStart();
+
     const TRY_NUMBER = this.race.getTry();
-    while (cnt !== TRY_NUMBER) {
-      /**
-       * 무작위 숫자를 통해서 전진, 멈춤을 정한다.
-       * 전진 한 횟수를 숫자로 받는다.
-       * OutputView에서 이름: 횟수 객체를 받고 출력한다.
-       */
-      cnt += 1;
+    for (let cnt = 0; cnt < TRY_NUMBER; cnt += 1) {
+      this.race.genGoOrNot();
+      const NAME_DIS_OBJ = this.race.getCarsNamesAndDistance();
+      OutputView.printResult(NAME_DIS_OBJ);
     }
   }
 }
