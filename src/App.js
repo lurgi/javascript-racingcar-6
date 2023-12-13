@@ -20,6 +20,7 @@ class App {
 
   async playCarName(){
     const CAR_NAMES = await InputView.readCarNames();
+    this.race.setCars(CAR_NAMES);
   }
 }
 
