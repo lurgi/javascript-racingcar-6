@@ -9,7 +9,7 @@ class App {
     await this.playCarName();
     await this.playTry();
     this.playResults();
-    // TODO 우승자 출력하기
+    this.playWinner();
   }
 
   async playCarName() {
@@ -41,6 +41,15 @@ class App {
       const NAME_DIS_OBJ = this.race.getCarsNamesAndDistance();
       OutputView.printResult(NAME_DIS_OBJ);
     }
+  }
+
+  playWinner() {
+    /**
+     * car정보 받아오기
+     * 제일 먼 거리 구하기.
+     * 제일 먼 거리가 0이면 우승자 없음.
+     * 제일 먼 거리가 1 이상이면 우승자 출력.
+     */
   }
 }
 
