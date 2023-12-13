@@ -7,11 +7,8 @@ class App {
     this.race = new Race();
 
     await this.playCarName();
-
-    //TODO 횟수 입력받기
     await this.playTry();
-
-    //TODO 실행 결과 출력하기
+    this.playResults();
     //TODO 우승자 출력하기
   }
 
@@ -26,17 +23,25 @@ class App {
   }
 
   async playTry() {
-    /**
-     * 횟수 입력 받고,
-     * 잘못된 입력인지 확인하기 및 테스트
-     * 경주 클래스에 할당하기
-     */
     try {
       const TRY_NUMBER = await InputView.readTryNumber();
       this.race.setTry(TRY_NUMBER);
     } catch (error) {
       OutputView.print(error.message);
       await this.playTry();
+    }
+  }
+
+  playResults() {
+    let cnt = 0;
+    const TRY_NUMBER = this.race.getTry();
+    while (cnt !== TRY_NUMBER) {
+      /**
+       * 무작위 숫자를 통해서 전진, 멈춤을 정한다.
+       * 전진 한 횟수를 숫자로 받는다.
+       * OutputView에서 이름: 횟수 객체를 받고 출력한다.
+       */
+      cnt += 1;
     }
   }
 }

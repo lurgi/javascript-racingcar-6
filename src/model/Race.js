@@ -31,6 +31,10 @@ class Race {
     this.#tryNumber = number;
   }
 
+  getTry() {
+    return this.#tryNumber;
+  }
+
   #validTryNumber(number) {
     if (Number.isNaN(number)) {
       throw new Error(ERROR_MESSAGES.notTryValid);
