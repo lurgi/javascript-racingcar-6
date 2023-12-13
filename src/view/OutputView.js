@@ -22,6 +22,9 @@ const OutputView = {
     );
     this.print('');
   },
+
+  printNoWinner() {},
+  printWinner() {},
 };
 
 export default OutputView;

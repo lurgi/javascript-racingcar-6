@@ -44,12 +44,14 @@ class App {
   }
 
   playWinner() {
-    /**
-     * car정보 받아오기
-     * 제일 먼 거리 구하기.
-     * 제일 먼 거리가 0이면 우승자 없음.
-     * 제일 먼 거리가 1 이상이면 우승자 출력.
-     */
+    const NAME_DIS_OBJ = this.race.getCarsNamesAndDistance();
+    const DISTANCES = Object.values(NAME_DIS_OBJ);
+    const MAX = Math.max(...DISTANCES);
+    if (MAX === 0) {
+      OutputView.printNoWinner();
+      return;
+    }
+    OutputView.printWinner();
   }
 }
 
