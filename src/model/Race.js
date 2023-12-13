@@ -1,7 +1,8 @@
 import Car from './Car';
 
 const ERROR_MESSAGES = {
-  notCarValid: '[ERROR] 이름은 5자이하, 2개이상, 쉼표로 구분해주세요.',
+  notCarValid:
+    '[ERROR] 이름은 5자이하, 2개이상, 중복 없이, 쉼표로 구분해주세요.',
   notTryValid: '[ERROR] 숫자 값은 1~50이하의 숫자여야 합니다.',
 };
 
@@ -18,6 +19,9 @@ class Race {
 
   #validCarNames(carNames) {
     if (carNames.length < 2) {
+      throw new Error(ERROR_MESSAGES.notCarValid);
+    }
+    if (carNames.length !== new Set(carNames).size) {
       throw new Error(ERROR_MESSAGES.notCarValid);
     }
   }
