@@ -33,6 +33,7 @@ class App {
      */
     try {
       const TRY_NUMBER = await InputView.readTryNumber();
+      this.race.setTry(TRY_NUMBER);
     } catch (error) {
       OutputView.print(error.message);
       await this.playTry();

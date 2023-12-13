@@ -1,11 +1,13 @@
 import Car from './Car';
 
 const ERROR_MESSAGES = {
-  notValid: '[ERROR] 이름은 5자이하, 2개이상, 쉼표로 구분해주세요.',
+  notCarValid: '[ERROR] 이름은 5자이하, 2개이상, 쉼표로 구분해주세요.',
+  notTryValid: '[ERROR] 숫자 값은 1~50이하의 숫자여야 합니다.',
 };
 
 class Race {
   #cars = [];
+  #tryNumber;
 
   setCars(carNames) {
     const CAR_NAME_ARR = carNames.split(',');
@@ -16,7 +18,21 @@ class Race {
 
   #validCarNames(carNames) {
     if (carNames.length < 2) {
-      throw new Error(ERROR_MESSAGES.notValid);
+      throw new Error(ERROR_MESSAGES.notCarValid);
+    }
+  }
+
+  setTry(number) {
+    this.#validTryNumber(number);
+    this.#tryNumber = number;
+  }
+
+  #validTryNumber(number) {
+    if (Number.isNaN(number)) {
+      throw new Error(ERROR_MESSAGES.notTryValid);
+    }
+    if (number < 1 || number > 50) {
+      throw new Error(ERROR_MESSAGES.notTryValid);
     }
   }
 }
