@@ -51,7 +51,7 @@ class App {
       OutputView.printNoWinner();
       return;
     }
-    OutputView.printWinner();
+    OutputView.printWinner(NAME_DIS_OBJ, MAX);
   }
 }
 

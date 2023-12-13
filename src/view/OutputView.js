@@ -4,6 +4,8 @@ const OUTPUT_MESSAGE = {
   resultStart: '\n실행 결과',
   barString: '-',
   newLine: '\n',
+  noWinner: '최종 우승자 없음',
+  winner: (names) => `최종 우승자 : ${names.join(',')}`,
 };
 
 const OutputView = {
@@ -23,8 +25,19 @@ const OutputView = {
     this.print('');
   },
 
-  printNoWinner() {},
-  printWinner() {},
+  printNoWinner() {
+    this.print(OUTPUT_MESSAGE.noWinner);
+  },
+  printWinner(object, max) {
+    const NAMES = Object.keys(object);
+    const WINNER = [];
+    NAMES.forEach((name) => {
+      if (object[name] === max) {
+        WINNER.push(name);
+      }
+    });
+    this.print(OUTPUT_MESSAGE.winner(WINNER));
+  },
 };
 
 export default OutputView;
